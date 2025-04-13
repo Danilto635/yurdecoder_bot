@@ -178,4 +178,10 @@ async def handle_text_contract(message: Message):
 # Запуск
 if __name__ == "__main__":
     print("Бот запущен ✅")
-    executor.start_polling(dp, skip_updates=True)
+    async def on_startup(dp):
+    await bot.delete_webhook(drop_pending_updates=True)
+
+if __name__ == "__main__":
+    print("Бот запущен ✅")
+    executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
+
